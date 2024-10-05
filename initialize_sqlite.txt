@@ -1,0 +1,59 @@
+-- Table: Team
+CREATE TABLE Team (
+    ID CHAR(8) PRIMARY KEY,
+    Name VARCHAR(30),
+    TeamLeadID CHAR(8),
+    LabID CHAR(8)
+);
+
+-- Table: Scientist
+CREATE TABLE Scientist (
+    ID CHAR(8) PRIMARY KEY,
+    FirstName VARCHAR(30),
+    LastName VARCHAR(30),
+    Salary FLOAT(5,2),
+    TeamID CHAR(8)
+);
+
+-- Table: Laboratory
+CREATE TABLE Laboratory (
+    ID CHAR(8) PRIMARY KEY,
+    Address VARCHAR(30),
+    BioSafety_Level TINYINT UNSIGNED,
+    Name VARCHAR(30)
+);
+
+-- Table: Instrument
+CREATE TABLE Instrument (
+    ID CHAR(8) PRIMARY KEY,
+    Name VARCHAR(30),
+    LabID CHAR(8)
+);
+
+-- Table: Experiment
+CREATE TABLE Experiment (
+    ID CHAR(8) PRIMARY KEY,
+    ScientistID CHAR(8),
+    Name VARCHAR(30),
+    Write_Up VARCHAR(10000),
+    InstrumentID CHAR(8)
+);
+
+
+.mode csv
+
+
+-- Import data into Team table
+.import 'updated_teams.csv' Team
+
+-- Import data into Scientist table
+.import 'scientists.csv' Scientist
+
+-- Import data into Laboratory table
+.import 'laboratories.csv' Laboratory
+
+-- Import data into Instrument table
+.import 'instruments.csv' Instrument
+
+-- Import data into Experiment table
+.import 'experiments.csv' Experiment
